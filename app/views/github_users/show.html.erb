@@ -1,0 +1,63 @@
+<%= stylesheet_link_tag "application.css" %>
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<div class="user_icon">
+  <img src="<%= @github_user.avatar_url %>" >
+  <p><%= link_to @github_user.username, @github_user.github_profile, target: "_blank" %></p>
+  <p class="date">Joined on Apr 7, 2016</p>
+</div>
+
+<div class="nav_bar">
+  <ul>
+    <li>
+      Commits
+    </li>
+    <li>
+      Languages
+    </li>
+    <li>
+      Repositorites
+    </li>
+  </ul>
+</div>
+
+<div class="w3-dropdown-click">
+  <button onclick="myFunction()" class="w3-btn">Followers (<%= @github_user.followers%>)</button>
+  <div id="Demo" class="w3-dropdown-content w3-animate-zoom">
+    <option value="saab">esmeryjose</option>
+  </div>
+</div>
+
+<!-- <div class="followers">
+  <select>
+    <option value="Followers"><p>Followers:(<%= @github_user.followers%>)</p></option>
+    <option value="saab">esmeryjose</option>
+  </select>
+</div> -->
+
+<script>
+function myFunction() {
+    var x = document.getElementById("Demo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+<div class="following">
+  <select>
+    <option value="Followers"><p>Following:(<%= @github_user.following%>)</p></option>
+    <option value="paige15">paige15</option>
+    <option value="parmLikesFood">parmLikesFood</option>
+    <option value="saab">esmeryjose</option>
+    <option value="mercedes">natalisp</option>
+    <option value="audi">olive4oyl</option>
+  </select>
+</div>
+
+<!-- <div class="front_page">
+  <p class="front">GitVisuals</p>
+</div>
+
+<p class="login">login with Github</p> -->

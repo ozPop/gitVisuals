@@ -17,7 +17,8 @@ githubuser = GithubUser.create(
           followers: 1,
           following: 5,
           starred_url: "https://api.github.com/users/ozPop/starred",
-          gists_url: "https://api.github.com/users/ozPop/gists"
+          gists_url: "https://api.github.com/users/ozPop/gists",
+          github_created_at: "2016-04-07 11:15:3"
 )
 
 githubuser2 = GithubUser.create(
@@ -30,5 +31,6 @@ githubuser2 = GithubUser.create(
           followers: 0,
           following: 0,
           starred_url: "https://api.github.com/users/Natalisp/starred",
-          gists_url: "https://api.github.com/users/Natalisp/gists"
+          gists_url: "https://api.github.com/users/Natalisp/gists",
+          github_created_at: "2015-3-23 11:15:3"
 )

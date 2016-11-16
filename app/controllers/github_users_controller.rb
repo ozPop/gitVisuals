@@ -7,6 +7,10 @@ class GithubUsersController < ApplicationController
     end
   end
 
+  def show
+    @github_user = GithubUser.find_by(id: params[:id])
+  end
+
   def create
   end
 
