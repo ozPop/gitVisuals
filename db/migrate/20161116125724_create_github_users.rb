@@ -8,8 +8,8 @@ class CreateGithubUsers < ActiveRecord::Migration[5.0]
       t.integer :public_gists
       t.integer :followers
       t.integer :following
-      t.datetime :created_at
-      t.datetime :updated_at
+      t.datetime :github_created_at
+      t.datetime :github_updated_at
       t.string :starred_url
       t.string :gists_url
 
