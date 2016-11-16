@@ -10,6 +10,7 @@ class User < ApplicationRecord
   #  binding.pry
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
+      user.username = auth.info.nickname
       user.password = Devise.friendly_token[0,20]
       user.token = auth.credentials.token
     end
