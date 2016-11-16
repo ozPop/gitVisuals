@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(version: 20161116125724) do
     t.integer  "public_gists"
     t.integer  "followers"
     t.integer  "following"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "github_created_at"
+    t.datetime "github_updated_at"
     t.string   "starred_url"
     t.string   "gists_url"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end
