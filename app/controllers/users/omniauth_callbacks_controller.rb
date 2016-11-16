@@ -6,7 +6,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       @user.update_token(request.env["omniauth.auth"]["credentials"]["token"])
-      binding.pry
       sign_in_and_redirect @user
       set_flash_message(:notice, :success, :kind => "Github") if is_navigational_format?
     else
