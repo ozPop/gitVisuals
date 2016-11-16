@@ -5,3 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+githubuser = GithubUser.create(
+          username: 'ozPop',
+          github_id: 18332252,
+          avatar_url: "https://avatars.githubusercontent.com/u/18332252?v=3",
+          github_profile: "https://github.com/ozPop",
+          public_repos: 395,
+          public_gists: 5,
+          followers: 1,
+          following: 5,
+          starred_url: "https://api.github.com/users/ozPop/starred",
+          gists_url: "https://api.github.com/users/ozPop/gists"
+)
+
+githubuser2 = GithubUser.create(
+          username: "Natalisp",
+          github_id: 12477106,
+          avatar_url: "https://avatars.githubusercontent.com/u/12477106?v=3",
+          github_profile: "https://github.com/Natalisp",
+          public_repos: 361,
+          public_gists: 0,
+          followers: 0,
+          following: 0,
+          starred_url: "https://api.github.com/users/Natalisp/starred",
+          gists_url: "https://api.github.com/users/Natalisp/gists"
+)
