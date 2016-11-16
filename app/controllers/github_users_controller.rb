@@ -3,7 +3,7 @@ class GithubUsersController < ApplicationController
     @github_users = GithubUser.all
     respond_to do |format|
       format.html { @github_users }
-      format.json { render :json, @github_users }
+      format.json { render json: @github_users, adapter: :json }
     end
   end
 
