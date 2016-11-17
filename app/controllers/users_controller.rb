@@ -1,13 +1,19 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show]
 
   def show
-    url = 'https://api.github.com/users/' + current_user.username
-    @resp = Faraday.get url do |req|
-        req.params['access_token'] = current_user.token
-      end
-      body_hash = JSON.parse(@resp.body)
-      current_user.update_attr(body_hash)
+    binding.pry
+    if current_user == @user
       render 'show'
+    else
+      redirect_to user_path(current_user)
+    end
+  end
+
+  private
+
+  def set_user
+    @user = User.find_by(id: params[:id])
   end
 
 end
