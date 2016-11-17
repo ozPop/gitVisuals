@@ -1,3 +1,3 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :repos_url
+  attributes :id, :username, :repos_url, :public_repos
 end

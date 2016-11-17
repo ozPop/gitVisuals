@@ -3,7 +3,10 @@ class UsersController < ApplicationController
 
   def show
     if current_user == @user
-      render 'show'
+      respond_to do |format|
+        format.html { render 'show' }
+        format.json { render json: current_user }
+      end
     else
       redirect_to user_path(current_user)
     end
