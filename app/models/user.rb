@@ -23,6 +23,7 @@ def update_attr(attr)
   self.update_attributes({
     avatar_url: attr["avatar_url"],
     github_profile: attr["html_url"],
+    repos_url: attr["repos_url"],
     public_repos: attr["public_repos"],
     public_gists: attr["public_gists"],
     followers: attr["followers_url"],
