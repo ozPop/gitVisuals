@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
 
  def self.from_omniauth(auth)
-  #  binding.pry
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.username = auth.info.nickname
@@ -23,11 +22,11 @@ end
 def update_attr(attr)
   self.update_attributes({
     avatar_url: attr["avatar_url"],
-    github_profile: attr["github_profile"],
+    github_profile: attr["html_url"],
     public_repos: attr["public_repos"],
     public_gists: attr["public_gists"],
-    followers: attr["followers"],
-    following: attr["following"],
+    followers: attr["followers_url"],
+    following: attr["following_url"],
     github_created_at: attr["created_at"].to_datetime,
     github_updated_at: attr["updated_at"].to_datetime,
     starred_url: attr["starred_url"],

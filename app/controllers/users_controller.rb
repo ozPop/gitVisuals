@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def show
-    binding.pry
     if current_user == @user
       render 'show'
     else
