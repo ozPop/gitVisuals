@@ -14,7 +14,7 @@
     <div class="user_icon">
       <img src="<%= @user.avatar_url %>" >
       <p><%= link_to @user.username, @user.github_profile, target: "_blank" %></p>
-      <p class="date">Joined on Apr 7, 2016</p>
+      <p class="date">Joined on: <%= @user.github_created_at.strftime("%A, %d %b %Y") %></p>
     </div>
 
     <div class="nav_bar">
