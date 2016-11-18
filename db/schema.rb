@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117172701) do
+ActiveRecord::Schema.define(version: 20161117222955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,11 +38,13 @@ ActiveRecord::Schema.define(version: 20161117172701) do
     t.string   "gists_url"
     t.integer  "public_repos"
     t.integer  "public_gists"
-    t.integer  "followers"
-    t.integer  "following"
+    t.integer  "total_followers"
+    t.integer  "total_following"
     t.datetime "github_created_at"
     t.datetime "github_updated_at"
     t.string   "repos_url"
+    t.string   "followers_url"
+    t.string   "following_url"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
