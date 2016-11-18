@@ -14,4 +14,12 @@ module ApiHelper
     end
     JSON.parse(@resp.body)
   end
+
+  def get_github_user_following(user)
+    url = user.following_url.split("{")[0]
+    @resp = Faraday.get url do |req|
+      req.params['access_token'] = user.token
+    end
+    JSON.parse(@resp.body)
+  end
 end
