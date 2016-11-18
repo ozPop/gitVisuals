@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user == @user
+      binding.pry
       respond_to do |format|
         format.html { render 'show' }
         format.json { render json: current_user }
