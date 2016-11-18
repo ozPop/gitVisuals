@@ -16,19 +16,20 @@
 .user_icon {
   text-align: center;
   height: auto;
-  font-size: 30px;
+  font-size: 40px;
 }
 
-img {
+.image {
   border-radius: 50%;
+  border: 5px solid #d5d5d5;
   width:30%;
   height:30%;
-  border-color: solid red;
 }
 
 table, th, td {
   margin: auto;
-  font-size: 12px;
+  font-size: 15px;
+  color: #181B1C;
   }
 
 .nav_bar {
