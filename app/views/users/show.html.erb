@@ -1,94 +1,44 @@
 <ul id="menu">
-  <li data-menuanchor="firstPage"><a href="#firstPage">First slide</a></li>
-  <li data-menuanchor="secondPage"><a href="#secondPage/1">Second slide</a></li>
+  <li data-menuanchor="firstPage"><a href="#firstPage">Home</a></li>
+  <li data-menuanchor="secondPage"><a href="#secondPage/1">Visualization</a></li>
   <li><%= link_to("Sign out", destroy_user_session_path, method: "delete") if user_signed_in?%></li>
 </ul>
 
 <div id="fullpage">
 
-
-
-
   <div class="section active" id="section0" data-anchor="firstPage">
 
-    <div class="user_icon">
-      <img src="<%= @user.avatar_url %>" >
-      <p><%= link_to @user.username, @user.github_profile, target: "_blank" %></p>
-      <!-- <p class="date">Joined on: <%= @user.github_created_at.strftime("%A, %d %b %Y") %></p>
-      <p class="date1">Last Updated on: <%= @user.github_updated_at.strftime("%A, %d %b %Y") %></p> -->
+    <%= render partial: "users/home_partials/icon", locals: {user: @user} %>
 
-    <table>
-      <tr>
-        <th style="text-align:right; padding: 5px">Joined on:</th>
-        <td style="text-align:left; padding: 5px"><%= @user.github_created_at.strftime("%A, %d %b %Y")%></td>
-      </tr>
-      <tr>
-        <th style="text-align:right; padding: 5px">Updated on:</th>
-        <td style="text-align:left; padding: 5px"><%= @user.github_updated_at.strftime("%A, %d %b %Y")%></td>
-      </tr>
-    </table>
+    <%= render "users/home_partials/navbar" %>
 
+    <%= render partial: "users/home_partials/follow", locals: {user: @user} %>
 
-    </div>
-
-    <div class="nav_bar">
-      <ul>
-        <li data-menuanchor="firstPage"><a href="#secondPage">Repositories</a></li>
-        <li data-menuanchor="secondPage"><a href="#secondPage/0">Languages</a></li>
-        <li data-menuanchor="secondPage"><a href="#secondPage/2">Commits</a></li>
-      </ul>
-    </div>
-
-
-    <div class="followers">
-      <select>
-        <option value="Followers"><p>Followers:(<%= @user.followers%>)</p></option>
-        <option value="saab">esmeryjose</option>
-      </select>
-    </div>
-
-
-    <div class="following">
-      <select>
-        <option value="Followers"><p>Following:(<%= @user.following%>)</p></option>
-        <option value="paige15">paige15</option>
-        <option value="parmLikesFood">parmLikesFood</option>
-        <option value="saab">esmeryjose</option>
-        <option value="mercedes">natalisp</option>
-        <option value="audi">olive4oyl</option>
-      </select>
-    </div>
   </div>
 
 
 
   <div class="section" id="section1" data-anchor="secondPage">
+
     <div class="slide">
       <div class="intro">
         <h1>Languages</h1>
-        <p>Not only vertical scrolling but also horizontal scrolling. With fullPage.js you will be able to add horizontal sliders in the most simple way ever.</p>
-
       </div>
-
     </div>
+
     <div class="slide active">
       <div class="intro">
         <h1>Repositories</h1>
-        <p>Easy to use. Configurable and customizable.</p>
       </div>
     </div>
+
     <div class="slide">
       <div class="intro">
         <h1>Commits</h1>
-        <p>It just looks cool. Impress everybody with a simple and modern web design!</p>
       </div>
     </div>
-    <!-- <div class="slide">
-      <div class="intro">
 
-        <h1>Compatible</h1>
-        <p>Working in modern and old browsers too! IE 8 users don't have the fault of using that horrible browser! Lets give them a chance to see your site in a proper way!</p>
-      </div>
-    </div> -->
   </div>
+
+
 </div>
