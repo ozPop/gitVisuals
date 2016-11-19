@@ -55,6 +55,7 @@ function renderCharts(repos) {
 });
 
 //pieChart
+
 var pie = document.getElementById("pieChart");
 var reposLanguages = repoLanguages(repos);
 var l = languageStats(reposLanguages);
@@ -70,6 +71,7 @@ var myPieChart = new Chart(pie, {
             "#95a5a6",
             "#9b59b6"
           ],
+          borderColor: "#ca4444",
           data: [
             l['Ruby'],
             l['HTML'],
@@ -103,5 +105,57 @@ var myPieChart = new Chart(pie, {
      }
 });
 
+var commits = document.getElementById("commitsChart").getContext("2d");
+var bubbleChartData = {
+    datasets: [
+      {
+            label: 'HTML',
+            data: [
+                {
+                    x: 1,
+                    y: reposCount[0],
+                    r: 15
+                },
+                {
+                    x: 40,
+                    y: reposCount[2],
+                    r: 10
+                }
+            ],
+            backgroundColor:"#FF6384",
+            hoverBackgroundColor: "#FF6384",
+        },
+        {
+            label: 'Ruby',
+            data: [
+                {
+                    x: 20,
+                    y: 5,
+                    r: 15
+                },
+                {
+                    x: 3,
+                    y: 15,
+                    r: 10
+                }
+            ],
+            backgroundColor:"#000",
+            hoverBackgroundColor: "#FF6384",
+        }
+        ]
+};
 
+var commitsChart = new Chart(commits,{
+            type: 'bubble',
+            data: bubbleChartData,
+            xAxisID: 'testing',
+            options: {
+
+                responsive: true,
+                title:{
+                    display: true,
+                    text:'Chart.js Bubble Chart'
+                },
+            }
+        });
 }
