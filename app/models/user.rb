@@ -39,28 +39,39 @@ class User < ApplicationRecord
       })
   end
 
+  def in_data_base
+
+  end
+
   def update_followers(followers)
     followers.each do |follower|
-      new_follower = {
-        login: follower["login"],
-        avatar_url: follower["avatar_url"],
-        html_url: follower["html_url"]
-      }
-      self.followers.build(new_follower)
+      if self.followers.where(login: follower["login"]).empty?
+        new_follower = {
+          login: follower["login"],
+          avatar_url: follower["avatar_url"],
+          html_url: follower["html_url"]
+        }
+        self.followers.build(new_follower)
+      end
       self.save
+      binding.pry
     end
   end
 
   def update_followings(followings)
     followings.each do |following|
-      new_following = {
-        login: following["login"],
-        avatar_url: following["avatar_url"],
-        html_url: following["html_url"]
-      }
-      self.followings.build(new_following)
+      if self.followings.where(login: following["login"]).empty?
+        new_following = {
+          login: following["login"],
+          avatar_url: following["avatar_url"],
+          html_url: following["html_url"]
+        }
+        self.followings.build(new_following)
+      end
       self.save
     end
   end
 
 end
+
+#self.followers.destroy(Follower.find_by(id: 3))
