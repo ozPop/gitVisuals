@@ -2,13 +2,13 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def show
-    if current_user == @user
+    if user_signed_in? && current_user == @user
       respond_to do |format|
         format.html { render 'show' }
         format.json { render json: current_user }
       end
     else
-      redirect_to user_path(current_user)
+      redirect_to root_path
     end
   end
 

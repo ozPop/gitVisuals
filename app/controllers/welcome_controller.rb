@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
   def index
-    if current_user
+    if user_signed_in?
       # is this a good place update current_user?
       body_hash = helpers.get_github_user(current_user)
       current_user.update_attr(body_hash)
