@@ -5,7 +5,7 @@ $(document).ready(function() {
 // CLASSES
 
 class User {
-  constructor({login, html_url, repos_url, avatar_url, followers_url, following_url, followers, following, public_repos, public_gists, starred_url, gists_url}) {
+  constructor({login, html_url, repos_url, avatar_url, followers_url, following_url, followers, following, public_repos, public_gists, starred_url, gists_url, created_at, updated_at}) {
     this.username = login;
     this.profile_url = html_url;
     this.repos_url = repos_url;
@@ -18,6 +18,8 @@ class User {
     this.public_gists = public_gists;
     this.starred_url = starred_url;
     this.gists_url = gists_url;
+    this.created_at = created_at;
+    this.updated_at = updated_at;
   }
 }
 
@@ -47,7 +49,12 @@ function getSearchedUser(user) {
   });
   request.done(function(response) {
     let user = new User(response);
-    getUserRepos(user.repos_url);
+    updateListItem('second', 'Second slide');
+    displaySearchedUser(user);
+    updateWrapperAttributes('#display-searched-user', 'section1', 'secondPage');
+    restartFullpage();
+    updateWindowLocation('#secondPage');
+    // getUserRepos(user.repos_url);
   });
   request.fail(function( jqXHR, textStatus) {
     alert( "Request failed: " + textStatus );
@@ -93,4 +100,26 @@ function languageStats(languages) {
     result[value] = language.length;
   });
   return result;
+}
+
+function updateWindowLocation(location) {
+  if (window.location.href.includes('#')) {
+    window.location.href = window.location.href.split('#')[0] + location;
+  } else {
+    window.location.href = window.location.href + location;
+  }
+}
+
+function updateListItem(page, name) {
+  // NEEDS IMPROVEMENT
+  // Should replace anchors when searching multiple times
+  $('#menu li').after('<li data-menuanchor="'+ page +'Page"><a href="#'+ page +'Page">'+ name +'</a></li>');
+}
+
+function updateWrapperAttributes(id, sectionNum, pageNum) {
+  $(id).attr({
+    class: 'section',
+    id: sectionNum,
+    'data-anchor': pageNum
+  });
 }
