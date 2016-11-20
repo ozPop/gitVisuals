@@ -10,7 +10,7 @@ function renderCharts(repos) {
   function getRepoCount(month, repos) {
   return repos.filter(function(repo){
     date = new Date(repo.created_at);
-    return date.getMonth() === month;
+    return (date.getMonth() +1) === month;
   }).length;
   }
 
@@ -105,6 +105,9 @@ var myPieChart = new Chart(pie, {
      }
 });
 
+
+
+// BUBBLES
 var commits = document.getElementById("commitsChart").getContext("2d");
 var bubbleChartData = {
     datasets: [
@@ -113,12 +116,12 @@ var bubbleChartData = {
             data: [
                 {
                     x: 1,
-                    y: reposCount[0],
+                    y: 20,
                     r: 15
                 },
                 {
-                    x: 40,
-                    y: reposCount[2],
+                    x: 14,
+                    y: 7,
                     r: 10
                 }
             ],
@@ -158,4 +161,6 @@ var commitsChart = new Chart(commits,{
                 },
             }
         });
+
+
 }
