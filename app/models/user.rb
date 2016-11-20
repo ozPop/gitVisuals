@@ -39,39 +39,79 @@ class User < ApplicationRecord
       })
   end
 
-  def in_data_base
-
-  end
-
-  def update_followers(followers)
-    followers.each do |follower|
-      if self.followers.where(login: follower["login"]).empty?
-        new_follower = {
-          login: follower["login"],
-          avatar_url: follower["avatar_url"],
-          html_url: follower["html_url"]
-        }
-        self.followers.build(new_follower)
+  def remove_extra_followers
+    if @follower_logins.empty?
+      self.followers.destroy_all
+    else
+      self.followers.each do |follower|
+        if !@follower_logins.include?(follower.login)
+          self.followers.destroy(Follower.find_by(id: follower.id))
+        end
       end
-      self.save
-      binding.pry
     end
+
   end
 
-  def update_followings(followings)
-    followings.each do |following|
-      if self.followings.where(login: following["login"]).empty?
-        new_following = {
-          login: following["login"],
-          avatar_url: following["avatar_url"],
-          html_url: following["html_url"]
-        }
-        self.followings.build(new_following)
+
+  def remove_extra_followings
+    if @following_logins.empty?
+      self.followings.destroy_all
+    else
+      self.followings.each do |following|
+        if !@following_logins.include?(following.login)
+          self.followings.destroy(Following.find_by(id: following.id))
+        end
       end
+    end
+
+  end
+
+  def make_hash(hash)
+    new_hash = {
+      login: hash["login"],
+      avatar_url: hash["avatar_url"],
+      html_url: hash["html_url"]
+    }
+  end
+  # give conditionals in case the followers hash comes in empty,
+  # because you dont want to push in nil values
+  def update_followers(api_followers)
+    @follower_logins = []
+
+    api_followers.each do |follower|
+      @follower_logins << follower["login"]
+      if self.followers.where(login: follower["login"]).empty?
+        self.followers.build(make_hash(follower))
+      end
+    end
+    remove_extra_followers
+    self.save
+  end
+
+
+
+
+  def update_followings(api_followings)
+    @following_logins = []
+    api_followings << {
+      "login" => "fakefollowing1",
+      "avatar_url" => "fakefollowing1",
+      "html_url" => "fakefollowing1"
+    }
+    api_followings << {
+      "login" => "fakefollowing2",
+      "avatar_url" => "fakefollowing2",
+      "html_url" => "fakefollowing2"
+    }
+    api_followings = []
+    api_followings.each do |following|
+      @following_logins << following["login"]
+      if self.followings.where(login: following["login"]).empty?
+        self.followings.build(make_hash(following))
+      end
+      remove_extra_followings
       self.save
     end
   end
 
 end
-
-#self.followers.destroy(Follower.find_by(id: 3))
