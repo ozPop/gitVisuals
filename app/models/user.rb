@@ -73,11 +73,9 @@ class User < ApplicationRecord
       html_url: hash["html_url"]
     }
   end
-  # give conditionals in case the followers hash comes in empty,
-  # because you dont want to push in nil values
+
   def update_followers(api_followers)
     @follower_logins = []
-
     api_followers.each do |follower|
       @follower_logins << follower["login"]
       if self.followers.where(login: follower["login"]).empty?
@@ -88,30 +86,16 @@ class User < ApplicationRecord
     self.save
   end
 
-
-
-
   def update_followings(api_followings)
     @following_logins = []
-    api_followings << {
-      "login" => "fakefollowing1",
-      "avatar_url" => "fakefollowing1",
-      "html_url" => "fakefollowing1"
-    }
-    api_followings << {
-      "login" => "fakefollowing2",
-      "avatar_url" => "fakefollowing2",
-      "html_url" => "fakefollowing2"
-    }
-    api_followings = []
     api_followings.each do |following|
       @following_logins << following["login"]
       if self.followings.where(login: following["login"]).empty?
         self.followings.build(make_hash(following))
       end
-      remove_extra_followings
-      self.save
     end
+    remove_extra_followings
+    self.save
   end
 
 end
