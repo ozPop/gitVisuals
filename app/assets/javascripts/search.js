@@ -18,8 +18,8 @@ class User {
     this.public_gists = public_gists;
     this.starred_url = starred_url;
     this.gists_url = gists_url;
-    this.created_at = created_at;
-    this.updated_at = updated_at;
+    this.created_at = formatDate(created_at);
+    this.updated_at = formatDate(updated_at);
   }
 }
 
@@ -115,4 +115,25 @@ function updateWrapperAttributes(id, pageNum) {
     class: 'section',
     'data-anchor': pageNum
   });
+}
+
+function formatDate(date) {
+  var monthNames = [
+  "Jan", "Feb", "Mar",
+  "Apr", "May", "Jun", "Jul",
+  "Aug", "Sep", "Oct",
+  "Nov", "Dec"
+  ];
+  var weekDays = [
+  "Sunday", "Monday", "Tuesday",
+  "Wednesday", "Thursday", "Friday",
+  "Saturday"
+  ];
+
+  var date = new Date(date);
+  var weekDay = date.getDay();
+  var moDay = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+  return  weekDays[weekDay] + ", " + moDay + " " + monthNames[monthIndex] + " " + year; 
 }

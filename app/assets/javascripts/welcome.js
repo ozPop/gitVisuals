@@ -31,6 +31,5 @@ function displaySearchedUser(user) {
 
 function displaySearchedUserCharts() {
   let html = formatChartsTemplate();
-  debugger
   $('#section2').html(html);
 }
