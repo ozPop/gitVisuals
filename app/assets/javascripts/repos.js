@@ -1,7 +1,7 @@
 $(function() {
   if ($('.users.show').length !== 0) {
     getAllUserRepos(window.currentUser.repos_url);
-    getCommits((window.currentUser.username);
+    getCommits(window.currentUser.username);
   }
 });
 
