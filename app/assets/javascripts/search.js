@@ -51,7 +51,7 @@ function getSearchedUser(user) {
     let user = new User(response);
     updateListItem('second', 'Second slide');
     displaySearchedUser(user);
-    updateWrapperAttributes('#display-searched-user', 'section1', 'secondPage');
+    updateWrapperAttributes('#section1', 'secondPage');
     restartFullpage();
     updateWindowLocation('#secondPage');
     getUserRepos(user.repos_url);
@@ -110,18 +110,15 @@ function updateWindowLocation(location) {
 }
 
 function updateListItem(page, name) {
-  // NEEDS IMPROVEMENT
-  // Should replace anchors when searching multiple
   let $slideButtons =  $('#menu li');
   if ($slideButtons.length === 1) {
     $slideButtons.after('<li data-menuanchor="'+ page +'Page"><a href="#'+ page +'Page">'+ name +'</a></li>');
   }
 }
 
-function updateWrapperAttributes(id, sectionNum, pageNum) {
+function updateWrapperAttributes(id, pageNum) {
   $(id).attr({
     class: 'section',
-    id: sectionNum,
     'data-anchor': pageNum
   });
 }
