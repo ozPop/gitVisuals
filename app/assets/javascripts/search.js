@@ -54,7 +54,7 @@ function getSearchedUser(user) {
     updateWrapperAttributes('#display-searched-user', 'section1', 'secondPage');
     restartFullpage();
     updateWindowLocation('#secondPage');
-    // getUserRepos(user.repos_url);
+    getUserRepos(user.repos_url);
   });
   request.fail(function( jqXHR, textStatus) {
     alert( "Request failed: " + textStatus );
@@ -96,8 +96,7 @@ function languageStats(languages) {
   let unique = languages.filter(onlyUnique);
   let result = {};
   $.each(unique, function(index, value) {
-    let language = languages.filter(function(val){ return val !== value });
-    result[value] = language.length;
+    result[value] = languages.filter(function(val){ return val === value }).length;
   });
   return result;
 }
