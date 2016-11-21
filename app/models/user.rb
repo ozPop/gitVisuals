@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :omniauthable
   has_many :followers
   has_many :followings
+  has_many :watch_lists
+  has_many :watchers, through: :watch_lists, source :users
 
 
  def self.from_omniauth(auth)
