@@ -1,13 +1,42 @@
+p.front { 
+  color: black;
+  font-size: 95px;
+  display: block;
+}
+
+p.login {
+  color: white;
+  font-size: 20px;
+  margin: 0px;
+  position: relative;
+  padding: 20px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+  p.front { font-size: 30px;}
+  p.login { font-size: 10px;}
+
+}
+
+.container{
+  margin: auto;
+}
+
+.frontname {
+  float: left;
+  text-align: center;
+  margin: 25px 50px 75px 100px;
+}
+
 div .front {
   display: inline-block;
   font-family: 'Open Sans';
-  font-size: 200px;
-  color: black;
-  
   display: block;
   text-transform: uppercase;
   position: relative;
-  margin: 200px 20px 0px 20px;
+  margin-top: 200px;
+  margin-left: 30px;
   float: left;
   opacity: 0.0;
   animation: port 3s 1 forwards;
@@ -54,10 +83,6 @@ div p:nth-of-type(9){
   -webkit-animation-delay: 0.8s;
 }
 
-/*div:hover p {
-  animation: reset 1s 1;
-  -webkit-animation: reset 5s 1 ;
-}*/
 
 @keyframes port {
   0%{
@@ -95,18 +120,9 @@ div p:nth-of-type(9){
   background-color: #e0dfdc;
 }
 
-.login{
-  color: white;
-  font-size: 20px;
-  margin: 0px;
-  position: relative;
-  padding: 20px;
-  text-align: center;
-}
 
 a:link, :visited {
   color: black;
   text-decoration: none;
 }
-
 
