@@ -1,6 +1,8 @@
 $(function() {
+  if ($('.users.show').length !== 0) {
     getAllUserRepos();
     getCommits('natalisp');
+  }
  });
 
 class Repo {
