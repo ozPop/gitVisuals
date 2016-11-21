@@ -111,8 +111,11 @@ function updateWindowLocation(location) {
 
 function updateListItem(page, name) {
   // NEEDS IMPROVEMENT
-  // Should replace anchors when searching multiple times
-  $('#menu li').after('<li data-menuanchor="'+ page +'Page"><a href="#'+ page +'Page">'+ name +'</a></li>');
+  // Should replace anchors when searching multiple
+  let $slideButtons =  $('#menu li');
+  if ($slideButtons.length === 1) {
+    $slideButtons.after('<li data-menuanchor="'+ page +'Page"><a href="#'+ page +'Page">'+ name +'</a></li>');
+  }
 }
 
 function updateWrapperAttributes(id, sectionNum, pageNum) {

@@ -13,7 +13,6 @@ function renderCharts(repos) {
   }
 
   var ctx = document.getElementById("barChart");
-  debugger
   var myChart = new Chart(ctx, {
     type: 'bar',
     label: 'REPOS',
