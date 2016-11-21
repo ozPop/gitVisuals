@@ -1,4 +1,3 @@
-
 function renderCharts(repos) {
 
 // BAR CHART
@@ -10,7 +9,7 @@ function renderCharts(repos) {
   function getRepoCount(month, repos) {
   return repos.filter(function(repo){
     date = new Date(repo.created_at);
-    return date.getMonth() === month;
+    return (date.getMonth() +1) === month;
   }).length;
   }
 
@@ -24,7 +23,8 @@ function renderCharts(repos) {
             data: reposCount,
             backgroundColor: "#ca4444",
             borderColor: "#ca4444",
-            borderWidth: 1
+            borderWidth: 1,
+            fontSize: 30
         }]
     },
     options: {
@@ -35,12 +35,12 @@ function renderCharts(repos) {
             yAxes: [{
                 ticks: {
                     beginAtZero:true,
-                    fontSize: 20
+                    fontSize: 30
                 }
               }],
             xAxes: [{
             ticks: {
-                fontSize: 20
+                fontSize: 30
               },
             barPercentage: 1
         }]
@@ -48,7 +48,7 @@ function renderCharts(repos) {
       legend: {
           position: 'top',
           labels: {
-            fontSize: 20
+            fontSize: 30
           }
       }
     }
@@ -82,8 +82,8 @@ var myPieChart = new Chart(pie, {
       },
   options: {
         tooltips: {
-          titleFontSize: 20,
-          bodyFontSize: 20
+          titleFontSize: 30,
+          bodyFontSize: 30
         },
          responsive: true,
          legend: {
@@ -105,57 +105,5 @@ var myPieChart = new Chart(pie, {
      }
 });
 
-var commits = document.getElementById("commitsChart").getContext("2d");
-var bubbleChartData = {
-    datasets: [
-      {
-            label: 'HTML',
-            data: [
-                {
-                    x: 1,
-                    y: reposCount[0],
-                    r: 15
-                },
-                {
-                    x: 40,
-                    y: reposCount[2],
-                    r: 10
-                }
-            ],
-            backgroundColor:"#FF6384",
-            hoverBackgroundColor: "#FF6384",
-        },
-        {
-            label: 'Ruby',
-            data: [
-                {
-                    x: 20,
-                    y: 5,
-                    r: 15
-                },
-                {
-                    x: 3,
-                    y: 15,
-                    r: 10
-                }
-            ],
-            backgroundColor:"#000",
-            hoverBackgroundColor: "#FF6384",
-        }
-        ]
-};
 
-var commitsChart = new Chart(commits,{
-            type: 'bubble',
-            data: bubbleChartData,
-            xAxisID: 'testing',
-            options: {
-
-                responsive: true,
-                title:{
-                    display: true,
-                    text:'Chart.js Bubble Chart'
-                },
-            }
-        });
 }

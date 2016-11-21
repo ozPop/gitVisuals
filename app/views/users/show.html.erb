@@ -12,37 +12,32 @@
   <li><%= link_to("Sign out", destroy_user_session_path, method: "delete") if user_signed_in?%></li>
 </ul>
 
-
 <div class="section active" id="section0" data-anchor="firstPage">
   <h1>User show using fullPage.js</h1>
   <p>Create Beautiful Fullscreen Scrolling Websites</p>
+</div> <!-- /.section -->
 
-</div>
 <div class="section" id="section1" data-anchor="secondPage">
-  <div class="slide">
-    <div id="reposChart"><h3>Repos Languages</h3></div>
-    <div class="intro">
-      <canvas id="pieChart" width="300" height="300"></canvas>
-    </div>
 
-  </div>
+  <div class="slide">
+    <div class="intro">
+      <div><h3>Repos Languages</h3></div>
+      <canvas id="pieChart" width="500" height="500"></canvas>
+    </div>
+  </div> <!-- /.slide -->
+
   <div class="slide active" >
-    <div id="reposChart"><h3>Repos Chart</h3></div>
-    <div class="intro" id="reposChart">
-      <canvas id="commitsChart"></canvas>
+    <div><h3>Commits Chart</h3></div>
+    <div class="intro">
+      <canvas id="commitsChart" height="600" width="600"></canvas>
     </div>
-  </div>
+  </div> <!-- /.slide -->
+
   <div class="slide">
     <div class="intro">
-
-      <canvas id="barChart"></canvas>
+      <div><h3>Repos</h3></div>
+      <canvas id="barChart" height="600" width="600"></canvas>
     </div>
-  </div>
-  <div class="slide">
-    <div class="intro">
+  </div> <!-- /.slide -->
 
-      <h1>Compatible</h1>
-      <p>Working in modern and old browsers too! IE 8 users don't have the fault of using that horrible browser! Lets give them a chance to see your site in a proper way!</p>
-    </div>
-  </div>
-</div>
+</div> <!-- /.section -->

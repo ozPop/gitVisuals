@@ -1,5 +1,6 @@
 $(function() {
     getReposUrl();
+    getCommits('natalisp');
  });
 
 class Repo {
