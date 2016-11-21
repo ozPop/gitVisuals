@@ -1,6 +1,7 @@
 function renderCharts(repos) {
+
 // BAR CHART
-  var months = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+  var months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   var reposCount =  months.map(function(month){
       return getRepoCount(month, repos);
   });
@@ -13,24 +14,25 @@ function renderCharts(repos) {
   }
 
   var ctx = document.getElementById("barChart");
-  debugger
   var myChart = new Chart(ctx, {
     type: 'bar',
-    label: 'REPOS',
     data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         datasets: [{
-            label: '# of Repos',
+            label: 'Repos Created',
             data: reposCount,
             backgroundColor: "#ca4444",
-            borderColor: "#ca4444",
-            borderWidth: 1,
+            borderColor: "#fff",
+            borderWidth: 3,
             fontSize: 30
         }]
     },
     options: {
+      responsive: true,
+      title: 'REPOS',
       tooltips: {
-        titleFontSize: 15
+        titleFontSize: 30,
+        bodyFontSize: 25
       },
         scales: {
             yAxes: [{
@@ -41,7 +43,8 @@ function renderCharts(repos) {
               }],
             xAxes: [{
             ticks: {
-                fontSize: 30
+                fontSize: 30,
+                display: true
               },
             barPercentage: 1
         }]
@@ -62,8 +65,12 @@ var reposLanguages = repoLanguages(repos);
 var l = languageStats(reposLanguages);
 
 var myPieChart = new Chart(pie, {
-    label: 'LANG',
-    type: 'pie',
+    type: 'doughnut',
+    animation:{
+        animateScale:true,
+        duration: 50000,
+        easing: 'easeInOutQuad'
+    },
     data: {
         labels: ["Ruby", "HTML", "JavaScript", "CSS"],
         datasets: [{
@@ -73,7 +80,8 @@ var myPieChart = new Chart(pie, {
             "#95a5a6",
             "#9b59b6"
           ],
-          borderColor: "#ca4444",
+          borderColor: "#fff",
+          borderWidth: 3,
           data: [
             l['Ruby'],
             l['HTML'],
@@ -99,10 +107,6 @@ var myPieChart = new Chart(pie, {
              beginAtZero: true
            },
            reverse: false
-         },
-         animation: {
-             animateRotate: false,
-             animateScale: true
          }
      }
 });

@@ -1,6 +1,6 @@
 $(function() {
     getAllUserRepos();
-    getCommits('natalisp');
+    getCommits(window.currentUser.username);
  });
 
 class Repo {

@@ -65,7 +65,7 @@ for (let z = 0; z < sizes.length; z++) {
 
   var commitsChart = document.getElementById("commitsChart").getContext("2d");
   var bubbleChartData = {
-    label: 'COMMITS',
+    labels: ["", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "ghggg"],
     datasets: [
         {
               label: 'Weekdays',
@@ -97,7 +97,8 @@ for (let z = 0; z < sizes.length; z++) {
                   }
               ],
               backgroundColor:"#ca4444",
-              hoverBackgroundColor: "#FF6384",
+              borderColor: '#fff',
+              borderWidth: 3
           },
           {
               label: 'Weekends',
@@ -114,7 +115,8 @@ for (let z = 0; z < sizes.length; z++) {
                 }
               ],
               backgroundColor:"#000",
-              hoverBackgroundColor: "#FF6384",
+              borderColor: '#fff',
+              borderWidth: 3
           }
           ]
   };
@@ -123,6 +125,10 @@ for (let z = 0; z < sizes.length; z++) {
               type: 'bubble',
               data: bubbleChartData,
               options: {
+                tooltips: {
+                  titleFontSize: 30,
+                  bodyFontSize: 25
+                },
                 pointLabels: {
                   fontSize: 30,
                 },
@@ -137,14 +143,18 @@ for (let z = 0; z < sizes.length; z++) {
                                 stepSize: 3
                                }
                               }],
-                        xAxes: [{
-                          display: true,
-                             ticks: {
-                               fontSize: 30,
-                               display: true,
-                                max: 8,
-                                min: 0
-                              }
+                         xAxes: [{
+                           display: true,
+                           ticks: {
+                             callback: function (value) {
+                              let labels = ["", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+                              return labels[value];
+                             },
+                             fontSize: 30,
+                             display: true,
+                              max: 8,
+                              min: 0
+                            }
                               }]
                        },
                   legend: {
