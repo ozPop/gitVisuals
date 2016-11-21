@@ -1,18 +1,22 @@
-<ul>
-  <%@users.each do |user| %>
-    <% if user != current_user %>
-      <li><%= user.username %></li>
-        <% if current_user.watching.include?(user) %>
-          <%= form_for user, url: users_delete_watch_path, method: "post" do |f| %>
-            <%= f.hidden_field :user_id, value: user.id  %>
-            <%= button_to "Delete Watch" %>
-          <% end %>
-        <% else %>
-          <%= form_for user, url: users_add_watch_path, method: "post" do |f| %>
-            <%= f.hidden_field :user_id, value: user.id  %>
-            <%= button_to "Keep Watch" %>
-          <% end %>
-        <% end %>
+<%@users.each do |user| %>
+  <% if user != current_user %>
+  <div class="">
+
+    <img class="image_index" src="<%= user.avatar_url %>" >
+    <br>
+    <b><%= user.username %></b>
+
+    <% if current_user.watching.include?(user) %>
+      <%= form_for user, url: users_delete_watch_path, method: "post" do |f| %>
+        <%= f.hidden_field :user_id, value: user.id  %>
+        <%= button_to "Delete Watch" %>
+      <% end %>
+    <% else %>
+      <%= form_for user, url: users_add_watch_path, method: "post" do |f| %>
+        <%= f.hidden_field :user_id, value: user.id  %>
+        <%= button_to "Keep Watch" %>
+      <% end %>
     <% end %>
+
   <% end %>
-</ul>
+<% end %>

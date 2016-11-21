@@ -1,16 +1,32 @@
 <div class="followers">
   <select>
     <option value="Followers"><p>Followers:(<%= user.followers.count %>)</p></option>
-    <option value="saab">esmeryjose</option>
+    <%= user.followers.each do |follower| %>
+      <option value="<%= follower.html_url %>"><%= follower.login %></option>
+    <% end %>
   </select>
 </div>
 <div class="following">
   <select>
-    <option value="Followers"><p>Following:(<%= user.followings.count %>)</p></option>
-    <option value="paige15">paige15</option>
-    <option value="parmLikesFood">parmLikesFood</option>
-    <option value="saab">esmeryjose</option>
-    <option value="mercedes">natalisp</option>
-    <option value="audi">olive4oyl</option>
+    <option value="following"><p>Following:(<%= user.followings.count %>)</p></option>
+    <%= user.followings.each do |following| %>
+      <option><%= link_to(following.login, following.html_url) %></option>
+    <% end %>
+  </select>
+</div>
+<div class="watching">
+  <select>
+    <option value="watching"><p>Watching:(<%= user.watching.count %>)</p></option>
+    <%= user.watching.each do |watch| %>
+      <option><%= link_to(watch.username, user_path(watch)) %></option>
+    <% end %>
+  </select>
+</div>
+<div class="watchers">
+  <select>
+    <option value="watchers"><p>Watchers:(<%= user.watchers.count %>)</p></option>
+    <%= user.watchers.each do |watcher| %>
+      <option><%= link_to(watcher.username, user_path(watcher)) %></option>
+    <% end %>
   </select>
 </div>

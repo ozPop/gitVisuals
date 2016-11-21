@@ -26,6 +26,13 @@
   height:30%;
 }
 
+.image_index {
+  border-radius: 50%;
+  border: 5px solid #d5d5d5;
+  width:10%;
+  height:10%;
+}
+
 table, th, td {
   margin: auto;
   font-size: 15px;
@@ -41,19 +48,15 @@ li {
   font-size: 30px;
 }
 
-.followers {
+.followers, .following, .watchers, .watching{
   margin: -8% 0% 0% 5%;
   /*margin-top: -8%;*/
   padding-bottom: 10%;
   display: block;
 }
 
-.following {
-  margin: -8% 0% 0% 5%;
-  /*margin-top: -8%;*/
-  padding-bottom: 10%;
-  display: block;
-}
+
+
 
 .slide_name{
   margin-left: 70px;
@@ -121,5 +124,3 @@ li {
 .dotstyle-fillin li.current a {
   box-shadow: inset 0 0 0 8px white;
 }
-
-
