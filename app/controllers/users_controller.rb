@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
+  def index
+    @users = User.all
+  end
+
   def show
     if user_signed_in? && current_user == @user
       respond_to do |format|

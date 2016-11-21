@@ -1,0 +1,15 @@
+<div class="user_icon">
+  <img class="image" src="<%= user.avatar_url %>" >
+  <p><%= link_to user.username, user.github_profile, target: "_blank"%></p>
+
+  <table>
+    <tr>
+      <th style="text-align:right; padding: 5px">Joined on:</th>
+      <td style="text-align:left; padding: 5px"><%= user.github_created_at.strftime("%A, %d %b %Y")%></td>
+    </tr>
+    <tr>
+      <th style="text-align:right; padding: 5px">Updated on:</th>
+      <td style="text-align:left; padding: 5px"><%= user.github_updated_at.strftime("%A, %d %b %Y")%></td>
+    </tr>
+  </table>
+</div>
