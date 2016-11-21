@@ -18,8 +18,8 @@ class User {
     this.public_gists = public_gists;
     this.starred_url = starred_url;
     this.gists_url = gists_url;
-    this.created_at = created_at;
-    this.updated_at = updated_at;
+    this.created_at = formatDate(created_at);
+    this.updated_at = formatDate(updated_at);
   }
 }
 
@@ -49,33 +49,27 @@ function getSearchedUser(user) {
   });
   request.done(function(response) {
     let user = new User(response);
-    updateListItem('second', 'Second slide');
-    displaySearchedUser(user);
-    updateWrapperAttributes('#display-searched-user', 'section1', 'secondPage');
+    updateListItem();
+    processSearchedUser(user);
+    processSearchedUserCharts();
+    getAllUserRepos(user.repos_url);
+    getCommits(user.username);
     restartFullpage();
     updateWindowLocation('#secondPage');
-    getUserRepos(user.repos_url);
   });
   request.fail(function( jqXHR, textStatus) {
     alert( "Request failed: " + textStatus );
   });
 }
 
-function getUserRepos(url) {
-  let request = $.ajax({
-    url: url,
-    type: 'GET',
-    dataType: 'JSON',
-    data: {access_token: window.currentUser.token, sort: 'pushed', per_page: 100},
-  });
-  request.done(function(response) {
-    let repos = response.map(function (repo) {
-        return new Repository(repo);
-      });
-  });
-  request.fail(function( jqXHR, textStatus) {
-    alert( "Request failed: " + textStatus );
-  });
+function processSearchedUser(user) {
+  displaySearchedUser(user);
+  updateWrapperAttributes('#section1', 'secondPage');
+}
+
+function processSearchedUserCharts() {
+  displaySearchedUserCharts();
+  updateWrapperAttributes('#section2', 'thirdPage');
 }
 
 // HELPER FUNCTIONS
@@ -110,15 +104,36 @@ function updateWindowLocation(location) {
 }
 
 function updateListItem(page, name) {
-  // NEEDS IMPROVEMENT
-  // Should replace anchors when searching multiple times
-  $('#menu li').after('<li data-menuanchor="'+ page +'Page"><a href="#'+ page +'Page">'+ name +'</a></li>');
+  let $slideButtons =  $('#menu li');
+  if ($slideButtons.length === 1) {
+    $slideButtons.after('<li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li><li data-menuanchor="thirdPage"><a href="#thirdPage">Third slide</a></li>');
+  }
 }
 
-function updateWrapperAttributes(id, sectionNum, pageNum) {
+function updateWrapperAttributes(id, pageNum) {
   $(id).attr({
     class: 'section',
-    id: sectionNum,
     'data-anchor': pageNum
   });
+}
+
+function formatDate(date) {
+  var monthNames = [
+  "Jan", "Feb", "Mar",
+  "Apr", "May", "Jun", "Jul",
+  "Aug", "Sep", "Oct",
+  "Nov", "Dec"
+  ];
+  var weekDays = [
+  "Sunday", "Monday", "Tuesday",
+  "Wednesday", "Thursday", "Friday",
+  "Saturday"
+  ];
+
+  var date = new Date(date);
+  var weekDay = date.getDay();
+  var moDay = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+  return  weekDays[weekDay] + ", " + moDay + " " + monthNames[monthIndex] + " " + year; 
 }

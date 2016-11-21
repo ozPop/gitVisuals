@@ -1,6 +1,8 @@
 <script type="text/javascript">
     window.currentUser = {
         id: "<%= current_user.id %>",
+        username: "<%= current_user.username %>",
+        repos_url: "<%= current_user.repos_url %>",
         token: "<%= current_user.token %>"
     }
 </script>
@@ -18,12 +20,13 @@
   </form>
 </div>
 
-<div id="display-searched-user"></div>
+<div id="section1"></div>
+
+<div id="section2"></div>
 
 <script id="searched-user" type="text/x-handlebars-template">
   {{#this}}
-<!--   <div class="section" id="section1" data-anchor="secondPage"> -->
-    <div class="user-icon">
+    <div class="user_icon">
       <img class="image" src="{{this.avatar_url}}">
       <p><a href="{{this.profile_url}}">{{this.username}}</a></p>
     </div>
@@ -37,6 +40,26 @@
         <td style="text-align:left; padding: 5px">{{this.updated_at}}</td>
       </tr>
     </table>
-  <!-- </div> -->
   {{/this}}
+</script>
+
+
+<script id="searched-user-charts" type="text/x-handlebars-template">
+    <div class="slide">
+      <div class="intro">
+        <canvas id="pieChart" width="500" height="500"></canvas>
+      </div>
+    </div> <!-- /.slide -->
+
+    <div class="slide active" >
+      <div class="intro">
+        <canvas id="barChart" height="600" width="600"></canvas>
+      </div>
+    </div> <!-- /.slide -->
+
+    <div class="slide">
+      <div class="intro">
+        <canvas id="commitsChart" height="600" width="600"></canvas>
+      </div>
+    </div> <!-- /.slide -->
 </script>

@@ -1,7 +1,9 @@
 $(function() {
-    getAllUserRepos();
-    getCommits(window.currentUser.username);
- });
+  if ($('.users.show').length !== 0) {
+    getAllUserRepos(window.currentUser.repos_url);
+    getCommits((window.currentUser.username);
+  }
+});
 
 class Repo {
   constructor(attr) {
@@ -29,12 +31,12 @@ class Repo {
 // AJAX CALLS
 
 
-function getAllUserRepos() {
+function getAllUserRepos(url) {
   let userRepos = [];
   let ajaxStatus = 0;
 
   for( let i = 0; i < 3; i++ ) {
-    getUserRepos(window.currentUser.repos_url, i + 1);
+    getUserRepos(url, i + 1);
   }
 
   function getUserRepos(url, pageNum) {
