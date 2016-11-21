@@ -17,8 +17,20 @@ function formatUserTemplate(user) {
   return templateScript(user);
 }
 
+function formatChartsTemplate() {
+  let template = $('#searched-user-charts').html();
+  let templateScript = Handlebars.compile(template);
+  return templateScript();
+}
+
 // DISPLAYING THINGS
 function displaySearchedUser(user) {
   let html = formatUserTemplate(user);
-  $('#display-searched-user').html(html);
+  $('#section1').html(html);
+}
+
+function displaySearchedUserCharts() {
+  let html = formatChartsTemplate();
+  debugger
+  $('#section2').html(html);
 }
