@@ -1,6 +1,6 @@
 $(function() {
   if ($('.users.show').length !== 0) {
-    getAllUserRepos();
+    getAllUserRepos(window.currentUser.repos_url);
     getCommits('natalisp');
   }
  });
@@ -31,12 +31,12 @@ class Repo {
 // AJAX CALLS
 
 
-function getAllUserRepos() {
+function getAllUserRepos(url) {
   let userRepos = [];
   let ajaxStatus = 0;
 
   for( let i = 0; i < 3; i++ ) {
-    getUserRepos(window.currentUser.repos_url, i + 1);
+    getUserRepos(url, i + 1);
   }
 
   function getUserRepos(url, pageNum) {
