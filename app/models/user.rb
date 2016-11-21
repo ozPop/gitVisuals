@@ -7,7 +7,10 @@ class User < ApplicationRecord
   has_many :followers
   has_many :followings
   has_many :watch_lists
-  has_many :watchers, through: :watch_lists, source :users
+  has_many :watching, through: :watch_lists, source: :watcher
+  has_many :watchers, through: :watch_lists, source: :user
+
+
 
 
  def self.from_omniauth(auth)

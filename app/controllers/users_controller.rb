@@ -16,6 +16,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def add_watch
+    current_user.watching << User.find_by(id: params[:user][:user_id])
+    current_user.save
+    redirect_to users_path
+  end
+
+  def delete_watch
+    current_user.watching.destroy(User.find_by(id: params[:user][:user_id]))
+    current_user.save
+    redirect_to users_path
+  end
+
   private
 
   def set_user
