@@ -9,6 +9,7 @@
 <ul id="menu">
   <li data-menuanchor="firstPage"><a href="#firstPage">Home</a></li>
   <li data-menuanchor="secondPage"><a href="#secondPage/1">Visualization</a></li>
+  <li data-menuanchor="thirdPage"><a href="/">Search</a></li>
   <li><%= link_to("Sign out", destroy_user_session_path, method: "delete") if user_signed_in?%></li>
 </ul>
 
