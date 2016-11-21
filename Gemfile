@@ -34,7 +34,7 @@ gem "figaro"
 # front end libraries and related
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'autoprefixer-rails'
-
+gem 'handlebars_assets'
 
 gem 'active_model_serializers', '~> 0.10.0'
 
