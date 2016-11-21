@@ -75,7 +75,7 @@ function getUserRepos(url) {
   });
   request.fail(function( jqXHR, textStatus) {
     alert( "Request failed: " + textStatus );
-  }); 
+  });
 }
 
 // HELPER FUNCTIONS
@@ -88,7 +88,7 @@ function repoLanguages(repos) {
 }
 
 // Source of code: http://stackoverflow.com/a/14438954/6664582
-function onlyUnique(value, index, self) { 
+function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
 }
 

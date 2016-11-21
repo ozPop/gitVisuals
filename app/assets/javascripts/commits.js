@@ -65,8 +65,8 @@ for (let z = 0; z < sizes.length; z++) {
 
   var commitsChart = document.getElementById("commitsChart").getContext("2d");
   var bubbleChartData = {
-    labels: ["SUN","MON","TUE","WED","THU","FRI","SAT"],
-      datasets: [
+    label: 'COMMITS',
+    datasets: [
         {
               label: 'Weekdays',
               data: [

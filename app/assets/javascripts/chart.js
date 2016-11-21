@@ -1,5 +1,4 @@
 function renderCharts(repos) {
-
 // BAR CHART
   var months = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
   var reposCount =  months.map(function(month){
@@ -14,8 +13,10 @@ function renderCharts(repos) {
   }
 
   var ctx = document.getElementById("barChart");
+  debugger
   var myChart = new Chart(ctx, {
     type: 'bar',
+    label: 'REPOS',
     data: {
         labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         datasets: [{
@@ -61,6 +62,7 @@ var reposLanguages = repoLanguages(repos);
 var l = languageStats(reposLanguages);
 
 var myPieChart = new Chart(pie, {
+    label: 'LANG',
     type: 'pie',
     data: {
         labels: ["Ruby", "HTML", "JavaScript", "CSS"],

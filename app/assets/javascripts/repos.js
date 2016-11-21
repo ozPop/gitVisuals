@@ -1,5 +1,5 @@
 $(function() {
-    getReposUrl();
+    getAllUserRepos();
     getCommits('natalisp');
  });
 
@@ -26,29 +26,44 @@ class Repo {
   }
 }
 
-
 // AJAX CALLS
 
-function getReposUrl() {
-   $.ajax({
+
+function getAllUserRepos() {
+  let userRepos = [];
+  let ajaxStatus = 0;
+
+  for( let i = 0; i < 3; i++ ) {
+    getUserRepos(window.currentUser.repos_url, i + 1);
+  }
+
+  function getUserRepos(url, pageNum) {
+    let request = $.ajax({
+      url: url,
       type: 'GET',
-      url: window.location.href + '.json',
-      success: function(resp){
-          createRepos(resp.repos_url);
+      dataType: 'JSON',
+      data: {access_token: window.currentUser.token, page: pageNum, sort: 'pushed', per_page: 100},
+    });
+    request.done(function(response) {
+      let repos = response.map(function (repo) {
+          return new Repository(repo);
+        });
+      userRepos.push(repos);
+      ajaxStatus += 1;
+      if ( ajaxStatus === 3 ) {
+        processUserRepos();
       }
     });
-}
+    request.fail(function( jqXHR, textStatus) {
+      alert( "Request failed: " + textStatus );
+    });
+  }
 
-function createRepos(url) {
-  $.ajax({
-    type: 'GET',
-    url: url,
-    success: function (response) {
-      var repos = response.map(function (repo) {
-        oneRepo = new Repo(repo)
-        return new Repo(repo);
-      });
-      renderCharts(repos);
-    }
-  })
+  function processUserRepos() {
+    let reposTotal = userRepos.reduce(function(a, b) {
+      return a.concat(b);
+    }, []);
+      renderCharts(reposTotal);
+  }
+
 }
