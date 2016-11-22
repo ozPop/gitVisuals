@@ -17,7 +17,7 @@ function renderCharts(repos) {
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         datasets: [{
             label: 'Repos Created',
             data: reposCount,
@@ -31,8 +31,13 @@ function renderCharts(repos) {
       responsive: true,
       title: 'REPOS',
       tooltips: {
-        titleFontSize: 30,
-        bodyFontSize: 25
+        titleFontSize: 0,
+        bodyFontSize: 35,
+        callbacks: {
+          label: function(tooltipItems, data) {
+              return tooltipItems.yLabel + ' repos created in ' + tooltipItems.xLabel ;
+          }
+      }
       },
         scales: {
             yAxes: [{
@@ -52,6 +57,7 @@ function renderCharts(repos) {
       legend: {
           position: 'top',
           labels: {
+            padding: 15,
             fontSize: 30
           }
       }
@@ -76,9 +82,9 @@ var myPieChart = new Chart(pie, {
         datasets: [{
           backgroundColor: [
             "#ca4444",
-            "#3498db",
-            "#95a5a6",
-            "#9b59b6"
+            "#492540",
+            "#80d4f6",
+            "#f6ea8c"
           ],
           borderColor: "#fff",
           borderWidth: 3,
@@ -91,12 +97,25 @@ var myPieChart = new Chart(pie, {
         }]
       },
   options: {
+    cutoutPercentage: 40,
         tooltips: {
-          titleFontSize: 30,
-          bodyFontSize: 30
+          titleFontSize: 35,
+          bodyFontSize: 35,
+          callbacks: {
+            label: function(tooltipItem, data) {
+              var dataset = data.datasets[tooltipItem.datasetIndex];
+              var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                return previousValue + currentValue;
+              });
+              var currentValue = dataset.data[tooltipItem.index];
+              var precentage = Math.floor(((currentValue/total) * 100)+0.5);
+              return precentage + "%";
+            }
+          }
         },
          responsive: true,
          legend: {
+             padding: 15,
              position: 'top',
              labels: {
                fontSize: 30

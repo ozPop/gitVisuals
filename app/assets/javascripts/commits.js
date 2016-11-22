@@ -65,7 +65,7 @@ for (let z = 0; z < sizes.length; z++) {
 
   var commitsChart = document.getElementById("commitsChart").getContext("2d");
   var bubbleChartData = {
-    labels: ["", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "ghggg"],
+    labels: ["", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     datasets: [
         {
               label: 'Weekdays',
@@ -114,7 +114,7 @@ for (let z = 0; z < sizes.length; z++) {
                     r: sizes[0]
                 }
               ],
-              backgroundColor:"#000",
+              backgroundColor:"#f6ea8c",
               borderColor: '#fff',
               borderWidth: 3
           }
@@ -126,8 +126,15 @@ for (let z = 0; z < sizes.length; z++) {
               data: bubbleChartData,
               options: {
                 tooltips: {
-                  titleFontSize: 30,
-                  bodyFontSize: 25
+                  enabled: true,
+                  fontSize: 35,
+                  bodyFontSize: 35,
+                  callbacks: {
+                    label: function(tooltipItems, data) {
+                      let labels = ["", "Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays", "Saturdays", "Sundays"];
+                        return tooltipItems.yLabel + ' commits on ' + labels[tooltipItems.xLabel];
+                    }
+                }
                 },
                 pointLabels: {
                   fontSize: 30,

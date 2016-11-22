@@ -3,7 +3,7 @@ div .front {
   font-family: 'Open Sans';
   font-size: 200px;
   color: black;
-  
+
   display: block;
   text-transform: uppercase;
   position: relative;
@@ -105,8 +105,7 @@ div p:nth-of-type(9){
 }
 
 a:link, :visited {
-  color: black;
+  color: #ca4444;
+  text-transform: uppercase;
   text-decoration: none;
 }
-
-
