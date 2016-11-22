@@ -1,16 +1,32 @@
 <div class="followers">
   <select>
     <option value="Followers"><p>Followers:(<%= user.followers.count %>)</p></option>
-    <option value="saab">esmeryjose</option>
+    <%= user.followers.each do |follower| %>
+      <option value="<%= follower.html_url %>"><%= follower.login %></option>
+    <% end %>
   </select>
 </div>
 <div class="following">
   <select>
-    <option value="Followers"><p>Following:(<%= user.followings.count %>)</p></option>
-    <option value="paige15">paige15</option>
-    <option value="parmLikesFood">parmLikesFood</option>
-    <option value="saab">esmeryjose</option>
-    <option value="mercedes">natalisp</option>
-    <option value="audi">olive4oyl</option>
+    <option value="following"><p>Following:(<%= user.followings.count %>)</p></option>
+    <%= user.followings.each do |following| %>
+    <option value="<%= following.html_url %>"><%= following.login %></option>
+    <% end %>
+  </select>
+</div>
+<div class="watching">
+  <select>
+    <option value="watching"><p>Watching:(<%= user.watching.count %>)</p></option>
+    <%= user.watching.each do |watch| %>
+      <option value="<%= watch.github_profile %>"><%= watch.username %></option>
+    <% end %>
+  </select>
+</div>
+<div class="watchers">
+  <select>
+    <option value="watchers"><p>Watchers:(<%= user.watchers.count %>)</p></option>
+    <%= user.watchers.each do |watcher| %>
+      <option value="<%= watcher.github_profile %>"><%= watcher.username %></option>
+    <% end %>
   </select>
 </div>
