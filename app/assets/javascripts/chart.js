@@ -40,6 +40,9 @@ function renderCharts(repos) {
       }
       },
         scales: {
+          gridLines: {
+            lineWidth: 3
+          },
             yAxes: [{
                 ticks: {
                     beginAtZero:true,
