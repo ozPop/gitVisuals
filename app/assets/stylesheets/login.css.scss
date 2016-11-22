@@ -1,131 +1,128 @@
+.fullpage-wrapper {
+  background-color: #e0dfdc;
+}
+
 p.front { 
-  color: black;
-  font-size: 95px;
-  display: block;
+ color: black;
+ font-size: 95px;
+ display: block;
 }
 
 p.login {
-  color: white;
-  font-size: 20px;
-  margin: 0px;
-  position: relative;
-  padding: 20px;
-  text-align: center;
+ color: white;
+ font-size: 20px;
+ margin: 0px;
+ position: relative;
+ padding: 20px;
+ text-align: center;
 }
 
 @media only screen and (max-width: 900px) {
-  p.front { font-size: 30px;}
-  p.login { font-size: 10px;}
+ p.front { font-size: 30px;}
+ p.login { font-size: 10px;}
 
 }
 
 .container{
-  margin: auto;
+ margin: auto;
 }
 
 .frontname {
-  float: left;
-  text-align: center;
-  margin: 25px 50px 75px 100px;
+ float: left;
+ text-align: center;
+ margin: 25px 50px 75px 100px;
 }
 
 div .front {
-  display: inline-block;
-  font-family: 'Open Sans';
-  font-size: 200px;
-  color: black;
-  display: block;
-  text-transform: uppercase;
-  position: relative;
-  margin-top: 200px;
-  margin-left: 30px;
-  float: left;
-  opacity: 0.0;
-  animation: port 3s 1 forwards;
-  -webkit-animation: port 3s 1 forwards;
+ display: inline-block;
+ font-family: 'Open Sans';
+ display: block;
+ text-transform: uppercase;
+ position: relative;
+ margin-top: 200px;
+ margin-left: 30px;
+ float: left;
+ opacity: 0.0;
+ animation: port 3s 1 forwards;
+ -webkit-animation: port 3s 1 forwards;
 }
 
 div p:nth-of-type(2){
-  animation-delay: 0.1s;
-  -webkit-animation-delay: 0.1s;
+ animation-delay: 0.1s;
+ -webkit-animation-delay: 0.1s;
 }
 
 div p:nth-of-type(3){
-  animation-delay: 0.2s;
-  -webkit-animation-delay: 0.2s;
+ animation-delay: 0.2s;
+ -webkit-animation-delay: 0.2s;
 }
 
 div p:nth-of-type(4){
-  animation-delay: 0.3s;
-  -webkit-animation-delay: 0.3s;
+ animation-delay: 0.3s;
+ -webkit-animation-delay: 0.3s;
 }
 
 div p:nth-of-type(5){
-  animation-delay: 0.4s;
-  -webkit-animation-delay: 0.4s;
+ animation-delay: 0.4s;
+ -webkit-animation-delay: 0.4s;
 }
 
 div p:nth-of-type(6){
-  animation-delay: 0.5s;
-  -webkit-animation-delay: 0.5s;
+ animation-delay: 0.5s;
+ -webkit-animation-delay: 0.5s;
 }
 
 div p:nth-of-type(7){
-  animation-delay: 0.6s;
-  -webkit-animation-delay: 0.6s;
+ animation-delay: 0.6s;
+ -webkit-animation-delay: 0.6s;
 }
 
 div p:nth-of-type(8){
-  animation-delay: 0.7s;
-  -webkit-animation-delay: 0.7s;
+ animation-delay: 0.7s;
+ -webkit-animation-delay: 0.7s;
 }
 
 div p:nth-of-type(9){
-  animation-delay: 0.8s;
-  -webkit-animation-delay: 0.8s;
+ animation-delay: 0.8s;
+ -webkit-animation-delay: 0.8s;
 }
 
 
 @keyframes port {
-  0%{
-    transform: rotateY(90deg) translateY(25%);
-    opacity: 0.0;
-  }
-  100%{
-    transform: rotateY(0deg) translateY(0%);
-    opacity: 1.0;
-  }
+ 0%{
+   transform: rotateY(90deg) translateY(25%);
+   opacity: 0.0;
+ }
+ 100%{
+   transform: rotateY(0deg) translateY(0%);
+   opacity: 1.0;
+ }
 }
 
 @-webkit-keyframes port {
-  0%{
-   -webkit-transform: rotateY(90deg) translateY(25%);
-    opacity: 0.0;
-  }
-  100%{
-    -webkit-transform: rotateY(0deg) translateY(0%);
-    opacity: 1.0;
-  }
+ 0%{
+  -webkit-transform: rotateY(90deg) translateY(25%);
+   opacity: 0.0;
+ }
+ 100%{
+   -webkit-transform: rotateY(0deg) translateY(0%);
+   opacity: 1.0;
+ }
 }
 
 @keyframes reset {
-  0%{}
-  100%{}
+ 0%{}
+ 100%{}
 }
 
 @-webkit-keyframes reset {
-  0%{}
-  100%{}
+ 0%{}
+ 100%{}
 }
-
-.main {
-  background-color: #e0dfdc;
-}
-
 
 a:link, :visited {
-  color: #ca4444;
-  text-decoration: none;
-  text-transform: uppercase;
+ color: black;
+ text-decoration: none;
+ text-transform: uppercase;
+ color: #ca4444;
 }
-
