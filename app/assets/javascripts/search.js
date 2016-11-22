@@ -106,7 +106,7 @@ function updateWindowLocation(location) {
 function updateListItem(page, name) {
   let $slideButtons =  $('#menu li');
   if ($slideButtons.length === 1) {
-    $slideButtons.after('<li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li><li data-menuanchor="thirdPage"><a href="#thirdPage">Third slide</a></li>');
+    $slideButtons.after('<li data-menuanchor="secondPage"><a href="#secondPage">User</a></li><li data-menuanchor="thirdPage"><a href="#thirdPage">Visualization</a></li>');
   }
 }
 
@@ -135,5 +135,5 @@ function formatDate(date) {
   var moDay = date.getDate();
   var monthIndex = date.getMonth();
   var year = date.getFullYear();
-  return  weekDays[weekDay] + ", " + moDay + " " + monthNames[monthIndex] + " " + year; 
+  return  weekDays[weekDay] + ", " + moDay + " " + monthNames[monthIndex] + " " + year;
 }
