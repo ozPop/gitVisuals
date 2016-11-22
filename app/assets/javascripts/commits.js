@@ -1,4 +1,3 @@
-
 function getCommits(user) {
   let url = 'https://api.github.com/users/' + user + '/events';
  $.ajax({

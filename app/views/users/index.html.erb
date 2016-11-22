@@ -1,6 +1,9 @@
-<div class="">
+<ul id="menu">
+  <li data-menuanchor="thirdPage"><a href="/">Search</a></li>
+  <li data-menuanchor="secondPage"><a href="/users/<%= current_user.id %>">User Profile</a></li>
+  <li><%= link_to("Sign out", destroy_user_session_path, method: "delete") if user_signed_in?%></li>
+</ul>
 
-</div>
 
 <%@users.each do |user| %>
   <% if user != current_user %>
@@ -11,17 +14,26 @@
           <div class="caption">
             <h3><b><%= user.username %></b></h3>
             <% if current_user.watching.include?(user) %>
+              <div class="forms">
                 <%= form_for user, url: users_delete_watch_path, method: "post" do |f| %>
                   <%= f.hidden_field :user_id, value: user.id  %>
                   <input type="submit" class="btn btn-primary" value="Delete Watch">
                 <% end %>
-                <a href="<%user.github_profile %>" class="btn btn-primary" role="button">Github Profile</a>
+                <form method="get" action="<%= user.github_profile %>" target="_blank" >
+                  <button type="submit" class="btn btn-primary" >Github Profile</button>
+                </form>
+              </div>
             <% else %>
-              <%= form_for user, url: users_add_watch_path, method: "post" do |f| %>
-                <%= f.hidden_field :user_id, value: user.id  %>
-                <input type="submit" class="btn btn-primary" value="Keep Watch">
-              <% end %>
-              <a href="<%user.github_profile %>" class="btn btn-primary" role="button">Github Profile</a>
+              <div class = "forms">
+                <%= form_for user, url: users_add_watch_path, method: "post" do |f| %>
+                  <%= f.hidden_field :user_id, value: user.id  %>
+                  <input type="submit" class="btn btn-primary" value="Keep Watch">
+                <% end %>
+                <form method="get" action="<%= user.github_profile %>" target="_blank" >
+                    <button type="submit" class="btn btn-primary" >Github Profile</button>
+                  </form>  
+              </div>
+              
             <% end %>
           </div>
         </div>

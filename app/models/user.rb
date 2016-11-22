@@ -12,7 +12,9 @@ class User < ApplicationRecord
 
 
 
-
+  def get_watchers
+    self.watchers.where(id: !self.id)
+  end
  def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

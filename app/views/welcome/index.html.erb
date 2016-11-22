@@ -8,11 +8,12 @@
   }
 </script>
 <ul id="menu">
-  <li data-menuanchor="secondPage"><a href="/users">GitWatch</a></li>
-  <li data-menuanchor="secondPage"><a href="/users/<%= @current_user.id %>">User Profile</a></li>
-<!--   <%= link_to("User Profile", user_path(current_user), 'class': 'btn btn-primary' ) %> -->
+<li data-menuanchor="firstPage"><a href="#firstPage">Search</a></li>
+  <li data-menuanchor="secondPage"><a href="/users/<%= current_user.id %>">User Profile</a></li>
+  <li data-menuanchor="thirdPage"><a href="/users">GitWatch</a></li></li>
   <li><%= link_to("Sign out", destroy_user_session_path, method: "delete") if user_signed_in?%></li>
 </ul>
+
 
 <div class="section active" id="section0" data-anchor="firstPage">
   <h2 class="search-heading">Search Github User Below</h2>
