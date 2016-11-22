@@ -10,7 +10,7 @@
   <select>
     <option value="following"><p>Following:(<%= user.followings.count %>)</p></option>
     <%= user.followings.each do |following| %>
-      <option><%= link_to(following.login, following.html_url) %></option>
+    <option value="<%= following.html_url %>"><%= following.login %></option>
     <% end %>
   </select>
 </div>
@@ -18,7 +18,7 @@
   <select>
     <option value="watching"><p>Watching:(<%= user.watching.count %>)</p></option>
     <%= user.watching.each do |watch| %>
-      <option><%= link_to(watch.username, user_path(watch)) %></option>
+      <option value="<%= watch.github_profile %>"><%= watch.username %></option>
     <% end %>
   </select>
 </div>
@@ -26,7 +26,7 @@
   <select>
     <option value="watchers"><p>Watchers:(<%= user.watchers.count %>)</p></option>
     <%= user.watchers.each do |watcher| %>
-      <option><%= link_to(watcher.username, user_path(watcher)) %></option>
+      <option value="<%= watcher.github_profile %>"><%= watcher.username %></option>
     <% end %>
   </select>
 </div>
