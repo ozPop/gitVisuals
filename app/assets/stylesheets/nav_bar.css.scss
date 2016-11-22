@@ -31,8 +31,8 @@
   height: 100%;
   outline: none;
   border-radius: 50%;
-  background-color: #e0dfdc;
-  background-color: #e0dfdc;
+  background-color: #ca4444;
+  background-color: #ca4444;
   text-indent: -999em;
   cursor: pointer;
   position: absolute;
@@ -44,7 +44,7 @@
 
 .dotstyle-fillin li a {
   background-color: transparent;
-  box-shadow: #e0dfdc;
+  box-shadow: #ca4444;
   -webkit-transition: box-shadow 0.3s ease;
   transition: box-shadow 0.3s ease;
 }
@@ -54,15 +54,15 @@
 }
 
 .dotstyle-fillin li a:focus {
-  box-shadow: #e0dfdc;
+  box-shadow: #ca4444;
 }
 
 .dotstyle-fillin li.current a {
-  box-shadow: #e0dfdc;
+  box-shadow: #ca4444;
 }
 
 .nav-tooltip .tooltip > .tooltip-inner {
-    background-color: #e0dfdc; 
+    background-color: #ca4444;
 }
 
 .nav-tooltip + .tooltip.left > .tooltip-arrow{
@@ -71,5 +71,5 @@
     margin-top:-5px;
     border-top:5px solid transparent;
     border-bottom:5px solid transparent;
-    border-left:5px solid #00A896;
+    border-left:5px solid #ca4444;
 }
