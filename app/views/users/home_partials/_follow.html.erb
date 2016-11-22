@@ -29,8 +29,8 @@
 
  <span class="plain-select">
   <select class="inp"  name="test">
-   <option value="watchers"><p>Watchers (<%= user.watchers.count %>)</p></option>
-   <%= user.watchers.each do |watcher| %>
+   <option value="watchers"><p>Watchers (<%= user.get_watchers.count %>)</p></option>
+   <%= user.get_watchers.each do |watcher| %>
      <option value="<%= watcher.github_profile %>"><%= watcher.username %></option>
    <% end %>
  </select>
