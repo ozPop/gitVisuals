@@ -1,3 +1,18 @@
+.nav-link {
+    font-size: 30px !important;
+    vertical-align: initial !important;
+    border-radius: 10px !important;
+    font-family: 'Lato', sans-serif !important;
+    padding: 9px 18px !important;
+    margin: 10px !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    border: none !important;
+}
+
+.nav-link:hover {
+    background: #F9F9F9 !important;
+}
+
 .search-heading {
     width: 85%;
     margin: 0 auto;
